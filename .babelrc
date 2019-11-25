@@ -1,0 +1,19 @@
+{
+	"presets": [
+		// doc: https://babeljs.io/docs/en/babel-preset-env
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"browsers": ["last 2 major versions", "safari >= 9", "IE >= 10"]
+				}
+			}
+		]
+	],
+	"plugins": [
+		["@babel/plugin-transform-runtime", { "corejs": 3 }],
+		"@babel/plugin-syntax-dynamic-import",
+		"@babel/proposal-class-properties",
+		"@babel/proposal-object-rest-spread"
+	]
+}
