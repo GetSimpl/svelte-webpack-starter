@@ -17,7 +17,7 @@ const DEV_PORT = 7000;
 
 const mode = process.env.NODE_ENV || "development";
 const dev = mode === "development";
-const shouldUseSourceMap = true;
+const shouldUseSourceMap = dev;
 const ci = process.env.CI === "true";
 const publicPath = "/";
 
@@ -66,7 +66,7 @@ module.exports = {
 		alias: {
 			svelte: path.resolve("node_modules", "svelte")
 		},
-		extensions: [".ts", ".mjs", ".js", ".json", ".css", ".scss", ".svelte"],
+		extensions: [".wasm", ".mjs", ".js", ".html", ".json", ".svelte"],
 		mainFields: ["svelte", "browser", "module", "main"]
 	},
 	output: {
@@ -85,8 +85,8 @@ module.exports = {
 			},
 			{
 				test: /\.svelte$/,
+				exclude: /node_modules/,
 				use: [
-					"babel-loader",
 					{
 						loader: "svelte-loader",
 						options: {
@@ -153,7 +153,7 @@ module.exports = {
 				verbose: true
 			}),
 		new HtmlWebPackPlugin(
-			merge({
+			htmlPluginConfig({
 				template: "./index.html",
 				filename: "index.html",
 				hash: true,
@@ -294,7 +294,7 @@ module.exports = {
 			: false
 	},
 	devServer: {
-		hot: true,
+		hot: false,
 		historyApiFallback: true,
 		port: DEV_PORT,
 		contentBase: "./dist",

@@ -4,6 +4,11 @@
 		[
 			"@babel/preset-env",
 			{
+				"useBuiltIns": "usage",
+				"modules": false,
+				"debug": false,
+				"forceAllTransforms": true,
+				"corejs": 3,
 				"targets": {
 					"browsers": ["last 2 major versions", "safari >= 9", "IE >= 10"]
 				}
