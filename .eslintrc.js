@@ -14,12 +14,10 @@ module.exports = {
 		}
 	],
 	settings: {
-		"import/resolver": {
-			node: {
-				extensions: [".js"]
-			}
-		},
 		"svelte3/ignore-styles": attributes =>
 			attributes.lang && attributes.lang.includes("scss")
+	},
+	parserOptions: {
+		sourceType: "module"
 	}
 };
